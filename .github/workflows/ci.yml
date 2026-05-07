@@ -34,6 +34,7 @@ jobs:
         run: |
           python -m pytest -v tests                                                                         
 
+
   secrets:
     name: Secret scanning
     runs-on: ubuntu-latest
