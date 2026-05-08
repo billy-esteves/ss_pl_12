@@ -40,6 +40,23 @@ jobs:
           sleep 5
           curl --fail http://127.0.0.1:5001/
 
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.10"
+
+      - name: Install dynamic test dependencies
+        run: |
+          pip install pytest requests
+
+      - name: Run dynamic API security tests
+        continue-on-error: true
+        run: |
+          python -m pytest -v tests_dynamic
+
       - name: Show logs if needed
         if: failure()
         run: |
