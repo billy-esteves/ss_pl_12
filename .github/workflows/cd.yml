@@ -1,11 +1,10 @@
 name: 2 - Continuous Deployment
-run-name: "${{ github.workflow }}"
 
 on:
   workflow_run:
-  workflows: ["1 - Continuous Integration"]
-  types:
-    - completed
+    workflows: ["1 - Continuous Integration"]
+    types:
+      - completed
 
 permissions:
   contents: read
