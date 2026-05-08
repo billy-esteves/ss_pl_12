@@ -57,6 +57,13 @@ jobs:
         run: |
           python -m pytest -v tests_dynamic
 
+      - name: Run OWASP ZAP baseline scan
+        uses: zaproxy/action-baseline@v0.15.0
+        continue-on-error: true
+        with:
+          target: "http://127.0.0.1:5001"
+          allow_issue_writing: false
+
       - name: Show logs if needed
         if: failure()
         run: |
