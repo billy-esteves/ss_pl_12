@@ -26,15 +26,13 @@ jobs:
 
       - name: Pull image
         run: |
-          docker pull ghcr.io/${{ github.repository }}/secure-coding-api:${{
-          github.event.workflow_run.head_sha }}
+          docker pull ghcr.io/${{ github.repository }}/secure-coding-api:${{ github.event.workflow_run.head_sha }}
 
       - name: Run staging container
         run: |
           docker run -d \--name secure-coding-api-staging \
           -p 5001:5001 \
-          ghcr.io/${{ github.repository }}/secure-coding-api:${{
-          github.event.workflow_run.head_sha }}
+          ghcr.io/${{ github.repository }}/secure-coding-api:${{ github.event.workflow_run.head_sha }}
 
       - name: Smoke test staging
         run: |
